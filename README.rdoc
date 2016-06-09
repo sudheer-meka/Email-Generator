@@ -1,28 +1,8 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1. bundle install
+2. Rake db:create
+3. Change api call address at config/initializers/constant.rb to test emails
+4. Create campaigns in the mailgun account manually and copy all the campaign ids.(We can create campaigns using api call,
+   but for time being I have not implemented it.)
+5. rails s
+6. In the home page we can enter subject,body and campaign id.We can add multiple email ids using add email button.
+7. If you are completed till this point,just submit the form it will send out the emails.
