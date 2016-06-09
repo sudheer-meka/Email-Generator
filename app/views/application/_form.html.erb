@@ -1,0 +1,39 @@
+<%= form_tag(send_email_path,remote: true) do %>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="true">
+    </div>
+    <div class="form-group">
+      <label for="campaign-id">Campaign ID:</label>
+      <input type="text" class="form-control" placeholder="Campaign ID" name="campaign_id" id="campaign-id" required="true">
+    </div>
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <textarea class="form-control" rows="3" id="body" placeholder="Body" required="true" name="body"></textarea>
+    </div>
+    <div class="multi-field-wrapper">
+      <div class="multi-fields" style="margin-bottom: 10px;">
+        <div class="multi-field form-inline" style="margin-bottom: 10px;">
+          <input class="form-control" type="email" placeholder="Email" name="emails[]">
+          <button type="button" class="btn btn-danger remove-field">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-default add-field" style="margin-bottom: 10px;">Add Email</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>
+
+<script>
+    $(function () {
+        $('.multi-field-wrapper').each(function () {
+            var $wrapper = $('.multi-fields', this);
+            $(document).on('click',".add-field",function () {
+                $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+            });
+            $(document).on('click',".multi-field .remove-field",function () {
+                if ($('.multi-field', $wrapper).length > 1)
+                    $(this).parent('.multi-field').remove();
+            });
+        });
+    })
+</script>

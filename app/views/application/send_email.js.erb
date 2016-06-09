@@ -1,0 +1,6 @@
+<% unless @errors %>
+$("#notice").html("<%= flash[:notice] %>");
+$('#email-form').html("<%= j render(:partial => 'form') %>");
+<% else %>
+alert('<%= @errors %>');
+<% end %>
